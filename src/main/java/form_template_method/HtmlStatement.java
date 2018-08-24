@@ -3,17 +3,6 @@ package form_template_method;
 import java.util.Enumeration;
 
 public class HtmlStatement {
-    public String value(Customer customer) {
-        Enumeration rentals = customer.getRentals().elements();
-        String result = getHeaderString(customer);
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            result += getEachRentalString(each);
-        }
-        //add footer lines
-        result += getFooterString(customer);
-        return result;
-    }
 
     private String getFooterString(Customer customer) {
         return "<P>You owe<EM>"
