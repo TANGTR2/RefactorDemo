@@ -4,7 +4,20 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class Customer {
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String name;
+
+    public Vector getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(Vector rentals) {
+        this.rentals = rentals;
+    }
+
     private Vector rentals = new Vector();
 
     public Customer(String name) {
@@ -20,31 +33,11 @@ public class Customer {
     }
 
     public String statement(){
-        Enumeration rentals = this.rentals.elements();
-        String result = getHeaderString();
-        while(rentals.hasMoreElements()){
-            Rental each = (Rental) rentals.nextElement();
-
-            result += getEachRentalString(each);
-        }
-
-        result += getFooterString();
-        return result;
+        TxtStatement txtStatement = new TxtStatement();
+        return txtStatement.value(this);
     }
 
-    private String getFooterString() {
-        return "Amount owed is " + String.valueOf(this.getTotalAmount()) + "\n" + "You earned " + String.valueOf(this.getTotalFrequentRenterPoints()) + " frequent renter points";
-    }
-
-    private String getEachRentalString(Rental each) {
-        return "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getAmount()) + "\n";
-    }
-
-    private String getHeaderString() {
-        return "Rental Record for " + getName() + "\n";
-    }
-
-    private double getTotalAmount() {
+    public double getTotalAmount() {
         double totalAmount = 0;
         Enumeration rentals = this.rentals.elements();
         while (rentals.hasMoreElements()) {
@@ -54,7 +47,7 @@ public class Customer {
         return totalAmount;
     }
 
-    private int getTotalFrequentRenterPoints() {
+    public int getTotalFrequentRenterPoints() {
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
         while (rentals.hasMoreElements()) {
