@@ -52,7 +52,5 @@ public class Customer {
             result += each.getFrequentRentalPoints();
         }
         return result;
-
     }
-
 }

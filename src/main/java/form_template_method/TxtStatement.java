@@ -1,7 +1,5 @@
 package form_template_method;
 
-import java.util.Enumeration;
-
 public class TxtStatement extends Statement {
 
     protected String getFooterString(Customer customer) {

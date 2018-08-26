@@ -10,7 +10,6 @@ public abstract class Statement {
             Rental each = (Rental) rentals.nextElement();
             result += getEachRentalString(each);
         }
-        //add footer lines
         result += getFooterString(customer);
         return result;
     }
