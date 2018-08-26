@@ -25,14 +25,19 @@ public class Customer {
         while(rentals.hasMoreElements()){
             Rental each = (Rental) rentals.nextElement();
 
-            //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getAmount()) + "\n";
+            result += getEachRentalString(each);
         }
 
-        //add footer lines
-        result += "Amount owed is " + String.valueOf(this.getTotalAmount()) + "\n";
-        result += "You earned " + String.valueOf(this.getTotalFrequentRenterPoints()) + " frequent renter points";
+        result += getFooterString();
         return result;
+    }
+
+    private String getFooterString() {
+        return "Amount owed is " + String.valueOf(this.getTotalAmount()) + "\n" + "You earned " + String.valueOf(this.getTotalFrequentRenterPoints()) + " frequent renter points";
+    }
+
+    private String getEachRentalString(Rental each) {
+        return "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getAmount()) + "\n";
     }
 
     private String getHeaderString() {
