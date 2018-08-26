@@ -21,7 +21,7 @@ public class Customer {
 
     public String statement(){
         Enumeration rentals = this.rentals.elements();
-        String result = "Rental Record for " + getName() + "\n";
+        String result = getHeaderString();
         while(rentals.hasMoreElements()){
             Rental each = (Rental) rentals.nextElement();
 
@@ -33,6 +33,10 @@ public class Customer {
         result += "Amount owed is " + String.valueOf(this.getTotalAmount()) + "\n";
         result += "You earned " + String.valueOf(this.getTotalFrequentRenterPoints()) + " frequent renter points";
         return result;
+    }
+
+    private String getHeaderString() {
+        return "Rental Record for " + getName() + "\n";
     }
 
     private double getTotalAmount() {
