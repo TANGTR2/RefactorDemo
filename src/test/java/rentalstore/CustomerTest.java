@@ -119,4 +119,18 @@ public class CustomerTest {
                 "<P>You owe<EM>2.0</EM><P>\n" +
                 "On this rental you earned <EM>1</EM> frequent renter points<P>", statement);
     }
+
+    @Test
+    public void should_return_correct_HtmlStatement_given_customer_has_rent_one_regular_movie_for_3_day() {
+        Movie regularMovie = new Movie("Titanic", 0);
+        Rental threeDayRental = new Rental(regularMovie, 3);
+        customer.addRental(threeDayRental);
+
+        String statement = customer.HtmlStatement();
+
+        assertEquals("<H1>Rentals for <EM>Tracy</EM></H1><P>\n" +
+                "Titanic: 3.5<BR>\n" +
+                "<P>You owe<EM>3.5</EM><P>\n" +
+                "On this rental you earned <EM>1</EM> frequent renter points<P>", statement);
+    }
 }
