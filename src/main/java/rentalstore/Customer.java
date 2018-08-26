@@ -58,6 +58,7 @@ public class Customer {
     }
 
     public String HtmlStatement() {
-        return null;
+        HtmlStatement htmlStatement = new HtmlStatement();
+        return htmlStatement.value(this);
     }
 }
